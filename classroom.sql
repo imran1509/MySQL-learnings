@@ -24,3 +24,20 @@ SELECT * FROM student;
 
 SHOW DATABASES;
 SHOW TABLES;
+
+CREATE TABLE test1 (
+id INT,
+name VARCHAR(50),
+age INT,
+city VARCHAR(20),
+PRIMARY KEY (id, name)
+);
+
+CREATE Table emp (
+id INT,
+salary INT DEFAULT 25000
+);
+
+INSERT INTO emp (id) VALUES (101); 
+
+SELECT * FROM emp;
