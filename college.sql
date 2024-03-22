@@ -19,6 +19,49 @@ VALUES
 (105, "piyush", 12, "F", "Delhi"),
 (106, "Guru", 82, "B", "Delhi");
 
+SELECT * FROM student;
+
+ALTER TABLE student
+ADD COLUMN age INT NOT NULL DEFAULT 19;
+
+ALTER TABLE student
+MODIFY COLUMN age VARCHAR(2);
+
+ALTER TABLE student
+CHANGE COLUMN age stu_age INT;
+
+ALTER TABLE student
+DROP COLUMN stu_age;
+
+ALTER TABLE student
+RENAME TO stu;
+
+TRUNCATE TABLE student;
+
+ALTER TABLE stu
+CHANGE COLUMN name full_name VARCHAR(50);
+
+DELETE FROM stu
+WHERE marks < 80;
+
+ALTER TABLE stu
+DROP COLUMN grade;
+
+CREATE TABLE dept(
+ id INT PRIMARY KEY,
+ name VARCHAR(50)
+);
+
+CREATE TABLE teacher (
+id INT PRIMARY KEY,
+name VARCHAR(50),
+dept_id INT,
+FOREIGN KEY (dept_id) REFERENCES dept(id)
+ON DELETE CASCADE
+ON UPDATE CASCADE
+);
+
+
 SELECT name, marks FROM student;
 SELECT DISTINCT city FROM student;
 
@@ -71,3 +114,10 @@ WHERE grade = "A"
 GROUP BY city
 HAVING max(marks) >= 93
 ORDER BY city ASC;
+
+SET SQL_SAFE_UPDATES = 0;
+
+UPDATE student
+SET grade = "O"
+WHERE grade = "A"
+
